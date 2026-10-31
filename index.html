@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Юрий Немыкин: разработчик Unreal Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090b13;--sf:#121626;--sf2:#1a2038;--tx:#eef1fb;--mu:#9ba4c0;--bd:#262d4a;--ac:#22d3ee;--ac2:#a78bfa;--ok:#4ade80;--hd:rgba(9,11,19,.88);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f5fb;--sf:#fff;--sf2:#eaeefa;--tx:#10142a;--mu:#586080;--bd:#d6dcee;--ac:#0b8aa6;--ac2:#7c3aed;--ok:#16a34a;--hd:rgba(243,245,251,.9);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f3f5fb;--sf:#fff;--sf2:#eaeefa;--tx:#10142a;--mu:#586080;--bd:#d6dcee;--ac:#0b8aa6;--ac2:#7c3aed;--ok:#16a34a;--hd:rgba(243,245,251,.9);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--tx);font:400 17px/1.65 Onest,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
+a{color:inherit}
+.w{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+header .w{display:flex;align-items:center;gap:22px;height:64px}
+.logo{font:700 15px Unbounded,Onest,sans-serif;text-decoration:none;margin-right:auto}
+.logo span{color:var(--ac)}
+nav{display:flex;gap:6px}
+nav a{text-decoration:none;color:var(--mu);font-size:15px;padding:6px 12px;border-radius:999px}
+nav a:hover{color:var(--tx);background:var(--sf2)}
+.lang{display:flex;background:var(--sf);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.lang button{font:600 13px Onest,sans-serif;background:none;color:var(--mu);border:0;border-radius:999px;padding:5px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ac);color:#06121a}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.hero{position:relative;padding:88px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 360px at 85% 10%,rgba(167,139,250,.22),transparent 70%),radial-gradient(520px 340px at 10% 0%,rgba(34,211,238,.16),transparent 70%),linear-gradient(var(--bd) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,var(--bd) 1px,transparent 1px) 0 0/48px 48px;opacity:.55;-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.hg{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+h1{font:700 clamp(38px,6.6vw,72px)/1.04 Unbounded,Onest,sans-serif;margin:0 0 20px;letter-spacing:-.02em;background:linear-gradient(100deg,var(--tx) 30%,var(--ac) 75%,var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font:500 clamp(17px,2.2vw,22px) Unbounded,Onest,sans-serif;color:var(--ac);margin:0 0 18px}
+.lead{max-width:540px;color:var(--mu);font-size:18px;margin:0 0 30px}
+.btn{display:inline-block;padding:13px 24px;text-decoration:none;font-weight:600;border-radius:999px;border:1px solid var(--bd);margin:0 10px 10px 0;background:var(--sf)}
+.btn.p{background:linear-gradient(100deg,var(--ac),var(--ac2));border-color:transparent;color:#06121a}
+.hud{background:var(--sf);border:1px solid var(--bd);border-radius:18px;overflow:hidden}
+.hb{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--sf2);border-bottom:1px solid var(--bd);color:var(--mu);font-size:13px}
+.hb i{width:10px;height:10px;border-radius:50%;background:var(--bd)}
+.hb i:first-child{background:var(--ac2)}
+.hb span{margin-left:8px}
+.st{display:grid;grid-template-columns:1fr 1fr}
+.st div{padding:20px 18px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.st div:nth-child(2n){border-right:0}
+.st b{display:block;font:700 26px/1.2 Unbounded,Onest,sans-serif;color:var(--tx)}
+.st span{color:var(--mu);font-size:14px}
+.on{display:flex;align-items:center;gap:10px;padding:14px 18px;font-size:14px;color:var(--mu)}
+.on::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(74,222,128,.18)}
+section{padding:80px 0}
+.hero+section{border-top:1px solid var(--bd)}
+h2{font:700 clamp(26px,4vw,38px)/1.15 Unbounded,Onest,sans-serif;margin:0 0 14px;letter-spacing:-.01em}
+h2::after{content:"";display:block;width:56px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--ac),var(--ac2));margin-top:14px}
+.sub{color:var(--mu);max-width:620px;margin:0 0 36px}
+h3{font:600 17px Onest,sans-serif;margin:0 0 6px}
+.svc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.svc li{padding:22px;border:1px solid var(--bd);background:var(--sf);border-radius:14px;font-weight:600}
+.svc li::before{content:"";display:block;width:28px;height:4px;border-radius:4px;background:var(--ac);margin-bottom:14px}
+.svc li:nth-child(even)::before{background:var(--ac2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chips button{font:600 14px Onest,sans-serif;background:var(--sf);color:var(--tx);border:1px solid var(--bd);border-radius:999px;padding:8px 16px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ac);border-color:var(--ac);color:#06121a}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{display:block;text-decoration:none;background:var(--sf);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--ac);transform:translateY(-3px)}
+.shot{position:relative;aspect-ratio:16/9;display:grid;place-items:center;background:linear-gradient(135deg,var(--g1),var(--g2))}
+.shot::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px) 0 0/28px 28px}
+.play{position:relative;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.play::after{content:"";margin-left:5px;border-left:17px solid #10142a;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.tag{position:absolute;left:12px;top:12px;padding:3px 11px;border-radius:999px;background:rgba(9,11,19,.6);color:#fff;font-size:13px;backdrop-filter:blur(4px)}
+.games{--g1:#0e7490;--g2:#4c1d95}.cinema{--g1:#be185d;--g2:#4c1d95}.spaces{--g1:#047857;--g2:#0e7490}.tech{--g1:#b45309;--g2:#9d174d}.shorts{--g1:#4338ca;--g2:#0e7490}
+.card .t{padding:16px 18px 18px}
+.card .t span{display:block;color:var(--mu);font-size:14px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.two p{margin:0 0 16px}
+ul.l{margin:0;padding:0;list-style:none}
+ul.l li{padding:11px 0 11px 24px;border-bottom:1px solid var(--bd);position:relative}
+ul.l li::before{content:"";position:absolute;left:0;top:20px;width:9px;height:9px;border-radius:3px;background:var(--ac)}
+.rig{margin-top:22px;padding:18px 20px;border:1px solid var(--bd);background:var(--sf);border-radius:14px;color:var(--mu);font-size:15px}
+.rig strong{display:block;color:var(--tx)}
+.tl{border-left:2px solid var(--bd);margin-left:6px}
+.job{position:relative;display:grid;grid-template-columns:190px 1fr;gap:20px;padding:0 0 32px 30px}
+.job::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--ac)}
+.job time{color:var(--ac);font-weight:600;font-size:15px;padding-top:2px}
+.job p{margin:4px 0 0;color:var(--mu)}
+.job em{font-style:normal;color:var(--mu);font-weight:400}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:28px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:7px 14px;border:1px solid var(--bd);background:var(--sf);border-radius:999px;font-size:15px}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ct a{display:block;padding:22px;border:1px solid var(--bd);background:var(--sf);border-radius:14px;text-decoration:none;font-weight:600;word-break:break-word}
+.ct a:hover{border-color:var(--ac)}
+.ct small{display:block;color:var(--mu);font-weight:400;font-size:14px;margin-bottom:4px}
+footer{padding:28px 0 36px;border-top:1px solid var(--bd);color:var(--mu);font-size:14px}
+@media (max-width:820px){nav{display:none}.hg,.two,.cols{grid-template-columns:1fr;gap:32px}.job{grid-template-columns:1fr;gap:2px}.hero{padding:56px 0 64px}section{padding:56px 0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<a class="logo" href="#top">Zimmerbude<span>Games</span></a>
+<nav id="nav"><a href="#portfolio" data-k="n1"></a><a href="#about" data-k="n2"></a><a href="#resume" data-k="n3"></a><a href="#contact" data-k="n4"></a></nav>
+<div class="lang" role="group"><button type="button" data-l="ru">RU</button><button type="button" data-l="en">EN</button></div>
+</div></header>
+<main id="top">
+<div class="hero"><div class="w hg">
+<div>
+<h1 data-k="name"></h1>
+<p class="role" data-k="role"></p>
+<p class="lead" data-k="lead"></p>
+<a class="btn p" href="#portfolio" data-k="c1"></a><a class="btn" href="#contact" data-k="c2"></a>
+</div>
+<div class="hud"><div class="hb"><i></i><i></i><i></i><span data-k="hb"></span></div><div class="st" id="st"></div><div class="on" data-k="on"></div></div>
+</div></div>
+
+<section id="services"><div class="w"><h2 data-k="svT"></h2><p class="sub" data-k="svS"></p><ul class="svc" id="svc"></ul></div></section>
+
+<section id="portfolio"><div class="w"><h2 data-k="pT"></h2><p class="sub" data-k="pS"></p><div class="chips" id="chips"></div><div class="grid" id="grid"></div></div></section>
+
+<section id="about"><div class="w"><h2 data-k="aT"></h2>
+<div class="two"><div id="abt"></div>
+<div><h3 data-k="eT"></h3><ul class="l" id="exp"></ul><div class="rig"><strong data-k="rT"></strong><span data-k="rD"></span></div></div></div>
+</div></section>
+
+<section id="resume"><div class="w"><h2 data-k="cvT"></h2><div class="tl" id="jobs"></div>
+<div class="cols">
+<div><h3 data-k="edT"></h3><p data-k="edD" style="margin:0 0 22px;color:var(--mu)"></p><h3 data-k="lgT"></h3><p data-k="lgD" style="margin:0;color:var(--mu)"></p></div>
+<div><h3 data-k="skT"></h3><div class="tags" id="skills"></div></div>
+</div></div></section>
+
+<section id="contact"><div class="w"><h2 data-k="kT"></h2><p class="sub" data-k="kS"></p>
+<div class="ct">
+<a href="mailto:yurinemikin@yandex.ru"><small data-k="kE"></small>yurinemikin@yandex.ru</a>
+<a href="tel:+79005672794"><small data-k="kP"></small>+7 900 567 2794</a>
+<a href="#contact" style="cursor:default"><small data-k="kH"></small>@ZimmerbudeGames</a>
+</div></div></section>
+</main>
+<footer><div class="w" data-k="ft"></div></footer>
+
+<script>
+var V=[
+["n4ER5EnZxeE","games","Full-Cycle Game Development","Полный цикл разработки игры"],
+["uxFmUc2Yx_o","games","Bringers of Darkness: Gameplay Demo","Bringers of Darkness: демо геймплея"],
+["yzUUgAf2rE4","games","Gameplay prototype","Прототип геймплея"],
+["OiEffus8UEs&t=5s","games","Mobile gameplay, part 1","Мобильный геймплей, часть 1"],
+["WOosAUNMNWI","games","Mobile gameplay, part 2","Мобильный геймплей, часть 2"],
+["vOCpJaXTy4U","cinema","Animated Music Video","Анимированный музыкальный клип"],
+["lsXqcNqPVRg","cinema","Cinematic 1","Синематик 1"],
+["7PefOc7VyVg","cinema","Cinematic 2","Синематик 2"],
+["mlaNxBC72bE","spaces","ArcViz Render 4K","Архитектурная визуализация, 4K"],
+["EGJjMZ-NEdo","spaces","ArchViz","Архитектурная визуализация"],
+["DCnnIfHaeTQ","spaces","ArtGallery","Виртуальная арт-галерея"],
+["cu_cm1S10x4","spaces","Virtual 3D store","Виртуальный 3D-магазин"],
+["Q3GghsoKl-4","spaces","Part of Metaverse","Часть метавселенной"],
+["TJN-QPAq00Q","tech","Virtual Assistant: Metahuman + AI","Виртуальный ассистент: Metahuman и ИИ"],
+["NTS9hkUn_Cg","tech","Dynamic Foam & Washing System for Skeletal Mesh","Динамическая система пены и мытья для Skeletal Mesh"],
+["3bc38J44ws8","shorts","Creatives, short 1","Креатив, шорт 1"],
+["-xixv6AscN4","shorts","Creatives, short 2","Креатив, шорт 2"]];
+var T={
+ru:{title:"Юрий Немыкин: разработчик Unreal Engine",n1:"Портфолио",n2:"Обо мне",n3:"Резюме",n4:"Контакты",
+name:"Юрий Немыкин",role:"Разработчик Unreal Engine",
+lead:"Игры, синематики и 3D-пространства от идеи до готового проекта. Больше пяти лет профессиональной работы с Unreal Engine и опыт телережиссёра за плечами.",
+c1:"Смотреть работы",c2:"Связаться",hb:"Профиль разработчика",on:"Открыт к сотрудничеству",
+st:[["5+","лет в Unreal Engine"],["17","видео в портфолио"],["PC, Android, Web","платформы"],["B2–C1","английский язык"]],
+svT:"Чем я занимаюсь",svS:"Работаю удалённо над проектами любой сложности, от прототипа до релиза.",
+svc:["Игры для ПК (Windows) и Android","Анимационные клипы высокого разрешения","3D-рекламные ролики","Виртуальные арт-галереи и выставочные павильоны","Интерактивный виртуальный магазин","3D-сайты","Архитектурная визуализация"],
+pT:"Портфолио",pS:"Все ролики опубликованы на YouTube. Нажмите на карточку, чтобы посмотреть.",
+f:{all:"Все",games:"Игры",cinema:"Синематики",spaces:"Пространства и визуализация",tech:"Технологии",shorts:"Шорты"},
+tg:{games:"Игры",cinema:"Синематик",spaces:"Пространства",tech:"Технологии",shorts:"Шорты"},
+watch:"Смотреть на YouTube",
+aT:"Обо мне",
+about:["Больше пяти лет я профессионально работаю с Unreal Engine. Знаю разработку и одиночных, и сетевых проектов: кинематографические сцены, игры для мобильных платформ и ПК, запуск проектов в вебе через Pixel Streaming и HTML5.","Глубоко знаю Visual Scripting, поэтому собираю игровые механики любой сложности.","Раньше я был телережиссёром, работал в студиях и на открытых площадках. Этот опыт помогает делать проекты с сильной картинкой и надёжной технической реализацией.","Регулярно повышаю квалификацию и слежу за новинками в игровой разработке."],
+eT:"Экспертиза",exp:["Анимация: Anim-asset, Anim-Montage, ABP, Retargeting","Искусственный интеллект и пользовательские интерфейсы","Визуальные эффекты в Niagara","Metahuman: настройка, анимация, LiveLink, персональные аватары через RealityCapture","Свет и работа с камерами","Аудио (Cubase) и видеомонтаж (Adobe)"],
+rT:"Рабочее место",rD:"Ryzen 5, 32 ГБ ОЗУ, RTX 3060 12 ГБ",
+cvT:"Резюме",
+jobs:[["2020 — настоящее время","Разработчик Unreal Engine","Фриланс","Полный цикл разработки игр для ПК и мобильных устройств. Синематики высокого разрешения."],["2018 — 2020","Веб-дизайнер","Фриланс","Сайты на WordPress, Joomla и ручная вёрстка."],["2015 — 2018","Специалист технической поддержки","Hetzner GmbH, Германия","Консультации и удалённая настройка виртуальных и выделенных серверов. Linux, Windows."],["до 2018","Продюсер, режиссёр","Нью-Йорк, Москва","Работа на телевидении в зарубежных и российских компаниях: Bravo Studios, Colossal Vision, RTVi, ТВ-3, RT."]],
+edT:"Образование",edD:"Touro College, Нью-Йорк. IT Advanced and Project Management.",lgT:"Язык",lgD:"Английский: B2–C1",
+skT:"Навыки",skills:["Любая версия UE","Blueprints","AI","UI","ABP","Anim-Montages","Network Replication","Sequencer","Photoshop","After Effects","Premiere","Cubase","Композиция кадра","Профессиональное освещение"],
+kT:"Контакты",kS:"Буду рад обсудить сотрудничество, в том числе при личной встрече.",kE:"Почта",kP:"Телефон",kH:"Ник",ft:"© 2026 Юрий Немыкин"},
+en:{title:"Yuri Nemikin: Unreal Engine developer",n1:"Portfolio",n2:"About",n3:"Résumé",n4:"Contact",
+name:"Yuri Nemikin",role:"Unreal Engine developer",
+lead:"Games, cinematics and 3D spaces, from idea to finished project. Over five years of professional work with Unreal Engine, backed by a TV director’s eye.",
+c1:"See my work",c2:"Get in touch",hb:"Developer profile",on:"Open to collaboration",
+st:[["5+","years in Unreal Engine"],["17","videos in portfolio"],["PC, Android, Web","platforms"],["B2–C1","English level"]],
+svT:"What I do",svS:"I work remotely on projects of any complexity, from prototype to release.",
+svc:["PC (Windows) and Android games","High-resolution animated clips","3D commercials","Virtual art galleries and exhibition pavilions","Interactive virtual store","3D websites","Architectural visualization"],
+pT:"Portfolio",pS:"Every video is hosted on YouTube. Click a card to watch.",
+f:{all:"All",games:"Games",cinema:"Cinematics",spaces:"Spaces and visualization",tech:"Tech",shorts:"Shorts"},
+tg:{games:"Games",cinema:"Cinematic",spaces:"Spaces",tech:"Tech",shorts:"Shorts"},
+watch:"Watch on YouTube",
+aT:"About me",
+about:["I have worked professionally with Unreal Engine for over five years. I know the full range of singleplayer and multiplayer development: cinematic scenes, mobile and PC games, and web delivery through Pixel Streaming and HTML5.","I know Visual Scripting deeply, so I build game mechanics of any complexity.","I used to work as a television director, in studios and on location. That background helps me make projects with strong visuals and solid technical execution.","I keep improving my skills and follow what’s new in game development."],
+eT:"Expertise",exp:["Animation: Anim-asset, Anim-Montage, ABP, Retargeting","AI and user interfaces","Visual effects in Niagara","Metahuman: customization, animation, LiveLink, personal avatars with RealityCapture","Lighting and camera setup","Audio (Cubase) and video editing (Adobe)"],
+rT:"Workstation",rD:"Ryzen 5, 32 GB RAM, RTX 3060 12 GB",
+cvT:"Résumé",
+jobs:[["2020 to present","Unreal Engine developer","Freelance","Full-cycle development of PC and mobile games. High-resolution cinematics."],["2018 – 2020","Web designer","Freelance","Websites on WordPress and Joomla, plus hand-coded layouts."],["2015 – 2018","Technical support specialist","Hetzner GmbH, Germany","Consulting and remote setup of virtual and dedicated servers. Linux, Windows."],["Until 2018","Producer, director","New York, Moscow","Television work for foreign and Russian broadcasters: Bravo Studios, Colossal Vision, RTVi, TV-3, RT."]],
+edT:"Education",edD:"Touro College, New York. IT Advanced and Project Management.",lgT:"Language",lgD:"English: B2–C1",
+skT:"Skills",skills:["Any UE version","Blueprints","AI","UI","ABP","Anim-Montages","Network Replication","Sequencer","Photoshop","After Effects","Premiere","Cubase","Shot composition","Professional lighting"],
+kT:"Contact",kS:"I’d be glad to discuss working together, including a face-to-face meeting.",kE:"Email",kP:"Phone",kH:"Handle",ft:"© 2026 Yuri Nemikin"}};
+var L="ru",F="all",KEY="portfolio-lang",nr=!/^ru/i.test(navigator.language||"");
+try{var s=localStorage.getItem(KEY);if(s==="ru"||s==="en")L=s;else if(nr)L="en"}catch(e){if(nr)L="en"}
+function $(i){return document.getElementById(i)}
+function li(a,c){return a.map(function(x){return"<"+c+">"+x+"</"+c+">"}).join("")}
+function url(id){return"https://www.youtube.com/"+(/^(3bc38J44ws8|-xixv6AscN4)$/.test(id)?"shorts/"+id:"watch?v="+id)}
+function render(){
+var t=T[L];document.documentElement.lang=L;document.title=t.title;
+document.querySelectorAll("[data-k]").forEach(function(e){e.textContent=t[e.getAttribute("data-k")]});
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===L)});
+$("nav").setAttribute("aria-label",L==="ru"?"Меню":"Menu");
+$("st").innerHTML=t.st.map(function(x){return"<div><b>"+x[0]+"</b><span>"+x[1]+"</span></div>"}).join("");
+$("svc").innerHTML=li(t.svc,"li");$("exp").innerHTML=li(t.exp,"li");$("skills").innerHTML=li(t.skills,"span");
+$("abt").innerHTML=li(t.about,"p");
+$("jobs").innerHTML=t.jobs.map(function(j){return'<div class="job"><time>'+j[0]+'</time><div><h3>'+j[1]+' <em>/ '+j[2]+'</em></h3><p>'+j[3]+'</p></div></div>'}).join("");
+$("chips").innerHTML=Object.keys(t.f).map(function(k){return'<button type="button" data-f="'+k+'" aria-pressed="'+(k===F)+'">'+t.f[k]+'</button>'}).join("");
+$("grid").innerHTML=V.filter(function(v){return F==="all"||v[1]===F}).map(function(v){return'<a class="card" href="'+url(v[0])+'" target="_blank" rel="noopener"><div class="shot '+v[1]+'"><span class="tag">'+t.tg[v[1]]+'</span><span class="play"></span></div><div class="t"><h3>'+(L==="ru"?v[3]:v[2])+'</h3><span>'+t.watch+'</span></div></a>'}).join("");
+}
+document.addEventListener("click",function(e){
+var l=e.target.closest("[data-l]"),f=e.target.closest("[data-f]");
+if(l){L=l.getAttribute("data-l");try{localStorage.setItem(KEY,L)}catch(x){}render()}
+if(f){F=f.getAttribute("data-f");render()}
+});
+render();
+</script>
+</body>
+</html>
